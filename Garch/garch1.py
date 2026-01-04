@@ -3,6 +3,8 @@ warnings.filterwarnings("ignore")
 
 import numpy as np
 import pandas as pd
+import matplotlib
+matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import yfinance as yf
 
@@ -447,7 +449,10 @@ def plot_last_year(df: pd.DataFrame):
     plt.ylabel("Volatilidad (%)")
     plt.legend()
     plt.tight_layout()
-    plt.show()
+    out_fname = "garch_vol_plot.png"
+    plt.savefig(out_fname)
+    plt.close()
+    print(f"Plot saved to {out_fname}")
 
 
 def main():
